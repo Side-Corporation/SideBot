@@ -1,3 +1,4 @@
+const fs = require('fs');
 
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 
