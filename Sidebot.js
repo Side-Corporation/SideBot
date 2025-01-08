@@ -8,6 +8,16 @@ fs.readFile('config.json', 'utf8', (err, data) => {
     return;
   }
 
+  try {
+    const config = JSON.parse(data);
+    const token = config.token;
+    console.log('Token:', token);
+
+  } catch (parseErr) {
+    console.error('Error getting token in config file');
+  }
+});
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on(Events.ClientReady, readyClient => {
@@ -22,4 +32,4 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
-client.login(TOKEN);
+client.login(token);
