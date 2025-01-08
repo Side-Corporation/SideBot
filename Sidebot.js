@@ -2,6 +2,12 @@ const fs = require('fs');
 
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 
+fs.readFile('config.json', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading config file:', err);
+    return;
+  }
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on(Events.ClientReady, readyClient => {
